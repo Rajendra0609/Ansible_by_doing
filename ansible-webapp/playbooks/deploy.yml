@@ -1,0 +1,15 @@
+---
+- hosts: webservers
+  become: yes
+  roles:
+    - ../roles/webserver  # Adjusted path to the webserver role
+
+- hosts: databases
+  become: yes
+  roles:
+    - ../roles/databaseserver  # Adjusted path to the databaseserver role
+
+- hosts: loadbalancers
+  become: yes
+  roles:
+    - ../roles/loadbalancer  # Adjusted path to the loadbalancer role
