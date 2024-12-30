@@ -1,0 +1,24 @@
+---
+- name: Manage User Accounts
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Create a new user
+      user_management:
+        action: create
+        username: rani
+        attributes:
+          shell: /bin/bash
+          home: /home/rani
+
+    - name: Update an existing user
+      user_management:
+        action: update
+        username: rani
+        attributes:
+          shell: /bin/zsh
+
+    - name: Delete a user
+      user_management:
+        action: delete
+        username: rani

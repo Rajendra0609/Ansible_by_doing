@@ -21,7 +21,7 @@ Skills Practiced: Role creation, Playbook structuring, Modular design.
 
 Verify weather it was working or not.
 curl -I http://192.168.0.194
-
+########################################################################################################################################
 Task 2: Ansible Vault
 Objective: Secure sensitive information using Ansible Vault.
 
@@ -42,4 +42,23 @@ ansible-vault edit secrets.yml
 ansible-vault create secrets.yml
 
 
+###########################################################################################################################################
 
+Task 3: Dynamic Inventory
+Objective: Use dynamic inventory to manage hosts.
+
+Steps:
+
+Create a script or use a plugin that fetches inventory data from a cloud provider (e.g., AWS, Azure).
+
+Configure the playbook to use the dynamic inventory.
+
+Deploy and manage cloud instances using the playbook.
+
+Skills Practiced: Dynamic inventory, Cloud integration.
+
+
+export ANSIBLE_LIBRARY=$PWD
+
+
+sudo journalctl | grep 'useradd'  ---> we can verify it.
