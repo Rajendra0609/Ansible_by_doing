@@ -1,0 +1,33 @@
+---
+- name: Deploy Application with Secure Secrets
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - secrets.yml
+    - db_secrets.yml
+
+  tasks:
+    - name: Print API Key
+      debug:
+        msg: "The API Key is: {{ api_key }}"
+
+    - name: Print Database Password
+      debug:
+        msg: "The Database Password is: {{ db_password }}"
+
+    - name: Deploy Application
+      command: /home/raja/ansible-playbooks/deploy_script.sh --api-key {{ api_key }} --db-password {{ db_password }}
+      command: /home/raja/ansible-playbooks/server_info_game.sh
+      register: deploy_output  # Capture the output of the command
+
+    - name: Show deployment output
+      debug:
+        var: deploy_output.stdout  # Display the standard output of the command
+
+    - name: Show deployment stderr
+      debug:
+        var: deploy_output.stderr  # Display the standard error of the command (if any)
+
+    - name: Show deployment output
+      debug:
+        msg: "{{ deploy_output.stdout }}" 
